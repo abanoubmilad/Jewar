@@ -10,6 +10,31 @@
 class Opr {
 	const TB_BOOK = "book_tb", TB_USER = "user_tb",
 	TB_BOOK_USER = "book_user_tb";
+/*
+	attributes go here
+`book_tb` 
+  `book_id` varchar(20) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `rating` varchar(10) NOT NULL,
+  `photo_url` varchar(100) NOT NULL
+
+`book_user_tb` 
+  `user_fk` int(11) NOT NULL,
+  `book_fk` int(11) NOT NULL,
+  `book_status` char(1) NOT NULL
+
+
+`user_tb` 
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `map_lat` double NOT NULL,
+  `map_lng` double NOT NULL,
+  PRIMARY KEY (`user_id`)
+*/
 
 	// The database connection
 	protected static $db;
@@ -120,7 +145,7 @@ class Opr {
 	}
 
 
-	/*              database info related operations go here          */
+	/*              start edting from here and on         */
 
 
 

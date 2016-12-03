@@ -7,29 +7,26 @@
  * @created    11/30/2016
  * @edited     11/30/2016
  */
-define( "STATUS", "s" );
-define( "BOOKS", "b" );
+define( "STATUS", "status" );
 $response = array();
 session_start();
 if ( isset( $_SESSION['id'] ) ) {
-    if ( isset( $_POST['book_status'] ) ) {
+    if ( isset( $_POST['book_id'] ) && isset( $_POST['book_status'] ) ) {
+        $book_id=$_POST['book_id'];
         $book_status=$_POST['book_status'];
-        if ( $book_status =="o" || $book_status =="s" ) {
+        if ( preg_match( "/[0-9]+/", $book_id ) && ($book_status =="o" || $book_status =="s") ) {
             include "Opr.php";
             $opr=new Opr();
-            $stores=$opr -> get_user_related_books( $_SESSION['id'], $book_status );
-            if ( $stores===false )
+            $check=$opr -> add_list_book( $_SESSION['id'], $book_id, $book_status );
+            if ( $check===false )
                 $response[STATUS] = 3;
-            else {
+            else
                 $response[STATUS] = 7;
-                $response[STORES] = $stores;
-            }
         }else
             $response[STATUS] = 2;
     }else
         $response[STATUS] = 1;
 } else
     $response[STATUS] = 0;
-
 echo json_encode( $response );
 ?>

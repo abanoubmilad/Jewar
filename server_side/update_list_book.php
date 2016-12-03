@@ -7,7 +7,7 @@
  * @created    11/30/2016
  * @edited     11/30/2016
  */
-define( "STATUS", "s" );
+define( "STATUS", "status" );
 $response = array();
 session_start();
 if ( isset( $_SESSION['id'] ) ) {
@@ -17,7 +17,7 @@ if ( isset( $_SESSION['id'] ) ) {
         if ( preg_match( "/[0-9]+/", $book_id ) && ($book_status =="o" || $book_status =="s") ) {
             include "Opr.php";
             $opr=new Opr();
-            $check=$opr -> add_book_list( $_SESSION['id'], $book_id, $book_status );
+            $check=$opr -> update_list_book( $_SESSION['id'], $book_id, $book_status );
             if ( $check===false )
                 $response[STATUS] = 3;
             else
