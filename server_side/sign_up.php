@@ -7,7 +7,7 @@
  * @created    11/30/2016
  * @edited     11/30/2016
  */
-define( "STATUS", "s" );
+define( "STATUS", "status" );
 $response = array();
 if ( isset( $_POST['email'] ) && isset( $_POST['pass'] ) ) {
     $email = $_POST['email'];
