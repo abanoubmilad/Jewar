@@ -27,8 +27,9 @@
             android:textSize="26sp" />
         <TextView
             android:id="@+id/btn"
-            style="@style/bottom_button"
-            android:text="search" />
+            android:text="search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <ListView

@@ -11,8 +11,7 @@
         android:id="@+id/photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:src="@mipmap/ic_def" />
+        android:layout_margin="5dp" />
 
 
     <LinearLayout
@@ -40,8 +39,17 @@
             android:textColor="@color/hotgreen"
             android:textSize="@dimen/font_largest" />
 
+        <TextView
+            android:id="@+id/status"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/hotgreen"
+            android:textSize="@dimen/font_larger" />
 
     </LinearLayout>
+
 </LinearLayout>
 
 

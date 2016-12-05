@@ -23,12 +23,9 @@ if ( isset( $_POST['email'] ) && isset( $_POST['pass'] ) ) {
             $_SESSION['id'] = $id;
             $response[STATUS] = 7;
         }
-
     }else
         $response[STATUS] = 2;
-
 } else
     $response[STATUS] = 1;
-
 echo json_encode( $response );
 ?>

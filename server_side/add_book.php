@@ -11,12 +11,16 @@ define( "STATUS", "status" );
 $response = array();
 session_start();
 if ( isset( $_SESSION['id'] ) ) {
-    if ( isset( $_POST['book_id'] ) ) {
+    if ( isset( $_POST['book_id'] ) && isset( $_POST['title'] ) && isset( $_POST['author'] ) && isset( $_POST['rating'] )&& isset( $_POST['photo_url'] ) ) {
         $book_id=$_POST['book_id'];
+        $title=$_POST['title'];
+        $author=$_POST['author'];
+        $rating=$_POST['rating'];
+        $photo_url=$_POST['photo_url'];
         if ( preg_match( "/[0-9]+/", $book_id ) ) {
             include "Opr.php";
             $opr=new Opr();
-            $check=$opr -> remove_from_list_book( $_SESSION['id'], $book_id );
+            $check=$opr -> add_book( $book_id, $title, $author, $rating, $photo_url);
             if ( $check===false )
                 $response[STATUS] = 3;
             else

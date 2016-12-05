@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/BookAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/DB.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/FragmentCurrentBooks.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/FragmentDisplayContactConnection.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/FragmentDisplayContactMap.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/FragmentSearchBooks.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/FragmentUserMap.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/HTTPClient.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/Home.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/jewar/abanoubm/jewar/Splash.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/AbstractAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/BookAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/BookOwnerAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/BookOwnersDisplay.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/DB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentCurrentBooks.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentDisplayContactConnection.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentDisplayContactMap.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentSearchBooks.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentUserMap.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/HTTPClient.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/Home.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/Splash.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/color" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_def.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_launcher.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/splash.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/action_bg.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/dynamic_bg.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/share.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/splash.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_book_owners_display.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/alert_mark_book.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_current_books.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_map.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search_books.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/item_book.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/item_owner.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml" charset="UTF-8" />
   </component>
 </project>
 

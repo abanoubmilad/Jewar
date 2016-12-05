@@ -60,11 +60,11 @@ class Opr {
 	 * @return int user's id if exists, false otherwise
 	 */
 	public function get_id( $email, $password ) {
-		$query ="SELECT id FROM ". self::TB_USER ." WHERE email='$email' AND password='$password' LIMIT 1";
+		$query ="SELECT user_id FROM ". self::TB_USER ." WHERE email='$email' AND password='$password' LIMIT 1";
 		$result =self::$db -> query( $query );
 		if ( mysqli_num_rows( $result )>0 ) {
 			$row=$result -> fetch_assoc();
-			return $row['id'];
+			return $row['user_id'];
 		}
 		return false;
 	}
@@ -75,7 +75,7 @@ class Opr {
 	 * @return bool true if email exists, false otherwise
 	 */
 	public function get_email( $email ) {
-		$query ="SELECT id FROM ".self::TB_USER." WHERE email='$email' LIMIT 1";
+		$query ="SELECT user_id FROM ".self::TB_USER." WHERE email='$email' LIMIT 1";
 		$result =self::$db -> query( $query );
 		return mysqli_num_rows( $result )>0;
 	}
@@ -87,7 +87,7 @@ class Opr {
 	 * @return int id of the user
 	 */
 	public function add_user( $email, $password ) {
-		$query ="INSERT INTO ".self::TB_USER." VALUES (NULL,'', '$email','$password','','','', '')";
+		$query ="INSERT INTO ".self::TB_USER." VALUES (NULL,'', '', '$email','$password','','')";
 		return self::$db -> insert( $query );
 	}
 	/**
@@ -129,7 +129,7 @@ class Opr {
 	 * @return bool true if success, false if failure
 	 */
 	public function update_email( $user_id, $new_email ) {
-		$query ="UPDATE ".self::TB_USER." SET email='$new_email' WHERE id='$user_id'";
+		$query ="UPDATE ".self::TB_USER." SET email='$new_email' WHERE user_id='$user_id'";
 		return self::$db -> query_and_check( $query );
 	}
 	/**
@@ -140,7 +140,7 @@ class Opr {
 	 * @return bool true if success, false if failure
 	 */
 	public function update_password( $user_id, $new_password ) {
-		$query ="UPDATE ".self::TB_USER." SET password='$new_password' WHERE id='$user_id'";
+		$query ="UPDATE ".self::TB_USER." SET password='$new_password' WHERE user_id='$user_id'";
 		return self::$db -> query_and_check( $query );
 	}
 
@@ -172,7 +172,7 @@ class Opr {
 	 * @return array of books  if success, false if failure
 	 */
     public function get_books_of_user( $user_fk , $book_status ) {
-		$query ="SELECT * FROM ".self::TB_BOOK_USER." INNER JOIN ".self::TB_BOOK." ON book_fk=book_id  WHERE user_fk='$user_fk' AND book_status='$book_status'";
+		$query ="SELECT book_id, title, author, rating, photo_url  FROM ".self::TB_BOOK_USER." INNER JOIN ".self::TB_BOOK." ON book_fk=book_id  WHERE user_fk='$user_fk' AND book_status='$book_status'";
 		$result= self::$db -> query( $query );
 		if ( mysqli_num_rows( $result )>0 ) {
 			$list_book=array();
@@ -185,7 +185,6 @@ class Opr {
 
 	}
 
-
 	 /**
      * get_owners_of_book
 	 * @param int     $user_fk      the user's id
@@ -193,7 +192,7 @@ class Opr {
 	 * @return array of book's owners  if success, false if failure
 	 */
     public function get_owners_of_book( $book_fk) {
-		$query ="SELECT * FROM ".self::TB_BOOK_USER." INNER JOIN ".self::TB_USER." ON user_fk=user_id WHERE book_fk='$book_fk' AND book_status='o'";
+		$query ="SELECT user_id, name, map_lat, map_lng FROM ".self::TB_BOOK_USER." INNER JOIN ".self::TB_USER." ON user_fk=user_id WHERE book_fk='$book_fk' AND book_status='o'";
 		$result= self::$db -> query( $query );
 		if ( mysqli_num_rows( $result )>0 ) {
 			$list_owners=array();
@@ -237,4 +236,18 @@ class Opr {
 	}
 
 
+	public function get_user_info( $user_id ) {
+			$query ="SELECT * FROM ".self::TB_USER." WHERE user_id='$user_id' LIMIT 1";
+			$result= self::$db -> query( $query );
+			if ( mysqli_num_rows( $result ) > 0 ) {
+		   		$row = $result -> fetch_assoc();
+				return array_values( $row );
+			}
+			return false;
+		}
+
+	public function add_book( $book_id, $title, $author, $rating, $photo_url) {
+		$query ="INSERT INTO ".self::TB_BOOK." VALUES ('$book_id','$title', '$author','$rating','$photo_url')";
+		return self::$db -> query_and_check( $query );
+	}
 }
