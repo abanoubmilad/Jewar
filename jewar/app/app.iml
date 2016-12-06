@@ -96,6 +96,7 @@
     <orderEntry type="library" exported="" name="play-services-iid-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-drive-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-auth-9.0.1" level="project" />
+    <orderEntry type="library" exported="" name="okio-1.4.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-wallet-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-common-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-9.0.1" level="project" />
@@ -115,11 +116,11 @@
     <orderEntry type="library" exported="" name="play-services-location-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-lite-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-messaging-9.0.1" level="project" />
-    <orderEntry type="library" exported="" name="okio-1.9.0" level="project" />
     <orderEntry type="library" exported="" name="animated-vector-drawable-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
     <orderEntry type="library" exported="" name="play-services-fitness-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-9.0.1" level="project" />
+    <orderEntry type="library" exported="" name="okhttp-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-auth-module-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-9.0.1" level="project" />
@@ -136,7 +137,7 @@
     <orderEntry type="library" exported="" name="support-core-utils-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="mediarouter-v7-23.0.0" level="project" />
-    <orderEntry type="library" exported="" name="okhttp-3.4.1" level="project" />
+    <orderEntry type="library" exported="" name="multidex-1.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-crash-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-analytics-9.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-9.0.1" level="project" />

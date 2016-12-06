@@ -42,14 +42,14 @@ public class BookAdapter extends AbstractAdapter<Book> {
 
 
         holder.status.setText(book.getStatus() == DB.BOOK_STATUS_OWNED ?
-                "you got this!" : book.getStatus() == DB.BOOK_STATUS_SEEKING ?
-                "looking for this!" : "click to mark this book!");
+                "own list" : book.getStatus() == DB.BOOK_STATUS_SEEKING ?
+                "wish list" : "add to list!");
 
 
         if (book.getPhotoURL().length() > 0)
-            Picasso.with(getContext()).load(book.getPhotoURL()).placeholder(R.drawable.ic_def).into(holder.photo);
+            Picasso.with(getContext()).load(book.getPhotoURL()).placeholder(R.mipmap.ic_def).into(holder.photo);
         else
-            holder.photo.setBackgroundResource(R.drawable.ic_def);
+        holder.photo.setBackgroundResource(R.mipmap.ic_def);
 
 //        if (selected == position)
 //            holder.root.setBackgroundColor(

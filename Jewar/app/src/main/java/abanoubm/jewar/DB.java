@@ -40,7 +40,7 @@ public class DB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table " + TB_BOOK + " ( " +
                 BOOK_ID + "  text, " +
-                BOOK_STATUS + "  character(1), " +
+                BOOK_STATUS + "  integer, " +
                 BOOK_TITLE + "  text, " +
                 BOOK_RATING + "  text, " +
                 BOOK_AUTHOR + "  text, " +
@@ -64,37 +64,52 @@ public class DB extends SQLiteOpenHelper {
         return check;
     }
 
-    public void addBooks(ArrayList<Book> books, int bookStatus) {
-        writableDB.beginTransaction();
-        ContentValues values;
-        for (Book book : books) {
+//    public void insertBooksUpdateStatus(ArrayList<Book> books) {
+//        writableDB.beginTransaction();
+//        ContentValues values;
+//        Book temp;
+//        for (Book book : books) {
+//            temp = getBook(book.getID());
+//            if (temp == null) {
+//                values = new ContentValues();
+//                values.put(BOOK_ID, book.getID());
+//                values.put(BOOK_STATUS, book.getStatus());
+//                values.put(BOOK_TITLE, book.getTitle());
+//                values.put(BOOK_RATING, book.getRating());
+//                values.put(BOOK_AUTHOR, book.getAuthor());
+//                values.put(BOOK_PHOTO_URL, book.getPhotoURL());
+//                writableDB.insert(TB_BOOK, null, values);
+//                book.setStatus(2);
+//            } else{
+//                book.setStatus(temp.getStatus());
+//            }
+//        }
+//        writableDB.setTransactionSuccessful();
+//        writableDB.endTransaction();
+//    }
+
+    public void updateStatusOfBooks(ArrayList<Book> books) {
+        for (Book book : books)
+            book.setStatus(getBookStatus(book.getID()));
+    }
+    public void insertBook(Book book) {
+        Book temp = getBook(book.getID());
+        if (temp == null) {
+            ContentValues values;
             values = new ContentValues();
             values.put(BOOK_ID, book.getID());
-            values.put(BOOK_STATUS, bookStatus);
+            values.put(BOOK_STATUS, book.getStatus());
             values.put(BOOK_TITLE, book.getTitle());
             values.put(BOOK_RATING, book.getRating());
             values.put(BOOK_AUTHOR, book.getAuthor());
             values.put(BOOK_PHOTO_URL, book.getPhotoURL());
             writableDB.insert(TB_BOOK, null, values);
+        } else if (temp.getStatus() != book.getStatus()) {
+            updateBookStatus(book.getID(), book.getStatus());
         }
-        writableDB.setTransactionSuccessful();
-        writableDB.endTransaction();
     }
 
-
-    public void addBook(Book book) {
-        ContentValues values;
-        values = new ContentValues();
-        values.put(BOOK_ID, book.getID());
-        values.put(BOOK_STATUS, book.getStatus());
-        values.put(BOOK_TITLE, book.getTitle());
-        values.put(BOOK_RATING, book.getRating());
-        values.put(BOOK_AUTHOR, book.getAuthor());
-        values.put(BOOK_PHOTO_URL, book.getPhotoURL());
-        writableDB.insert(TB_BOOK, null, values);
-    }
-
-    public void updateBookStatus(String bookID, int bookStatus) {
+    private void updateBookStatus(String bookID, int bookStatus) {
         ContentValues values;
         values = new ContentValues();
         values.put(BOOK_STATUS, bookStatus);
@@ -103,7 +118,7 @@ public class DB extends SQLiteOpenHelper {
 
     public ArrayList<Book> getBooks(int bookStatus) {
         Cursor c = readableDB.query(TB_BOOK,
-                new String[]{BOOK_ID, BOOK_TITLE, BOOK_RATING, BOOK_AUTHOR, BOOK_PHOTO_URL},
+                new String[]{BOOK_ID,BOOK_STATUS, BOOK_TITLE, BOOK_RATING, BOOK_AUTHOR, BOOK_PHOTO_URL},
                 BOOK_STATUS + " = ?", new String[]{bookStatus + ""}, null, null, BOOK_TITLE, null);
 
         ArrayList<Book> result = new ArrayList<>(c.getCount());
@@ -123,7 +138,7 @@ public class DB extends SQLiteOpenHelper {
 
     public Book getBook(String bookID) {
         Cursor c = readableDB.query(TB_BOOK,
-                new String[]{BOOK_ID, BOOK_TITLE, BOOK_RATING, BOOK_AUTHOR, BOOK_PHOTO_URL},
+                new String[]{BOOK_ID,BOOK_STATUS, BOOK_TITLE, BOOK_RATING, BOOK_AUTHOR, BOOK_PHOTO_URL},
                 BOOK_ID + " = ?", new String[]{bookID}, null, null, BOOK_TITLE, null);
 
         Book result = null;
@@ -139,7 +154,7 @@ public class DB extends SQLiteOpenHelper {
 
     public ArrayList<Book> getBooks() {
         Cursor c = readableDB.query(TB_BOOK,
-                new String[]{BOOK_ID, BOOK_TITLE, BOOK_RATING, BOOK_AUTHOR, BOOK_PHOTO_URL},
+                new String[]{BOOK_ID,BOOK_STATUS, BOOK_TITLE, BOOK_RATING, BOOK_AUTHOR, BOOK_PHOTO_URL},
                 null, null, null, null, BOOK_TITLE, null);
 
         ArrayList<Book> result = new ArrayList<>(c.getCount());

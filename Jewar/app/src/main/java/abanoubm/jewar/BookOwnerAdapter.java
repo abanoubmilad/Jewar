@@ -38,7 +38,7 @@ public class BookOwnerAdapter extends AbstractAdapter<BookOwner> {
         if (holder.bitmap != null)
             holder.photo.setImageBitmap(holder.bitmap);
         else
-            holder.photo.setImageResource(R.drawable.ic_photo_def);
+            holder.photo.setImageResource(R.mipmap.ic_photo_def);
 
         holder.name.setText(owner.getName());
 

@@ -10,7 +10,7 @@ public class Splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        startActivity(new Intent(Splash.this, Home.class));
+        startActivity(new Intent(Splash.this, SignIn.class));
         finish();
 
     }

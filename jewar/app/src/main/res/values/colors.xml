@@ -3,11 +3,14 @@
     <color name="colorPrimaryDark">#C2185B</color>
     <color name="colorAccent">#616161</color>
 
-    <color name="red">#6FE4DA</color>
+    <color name="red">#ffe67f80</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="hint">#808080</color>
     <color name="hotgreen">#27AB5E</color>
+    <color name="blue">#ff3ca4ff</color>
+    <color name="hotred">#ffff3f77</color>
     <color name="dark">#16566f</color>
+    <color name="firegreen">#C7F200</color>
 
 </resources>

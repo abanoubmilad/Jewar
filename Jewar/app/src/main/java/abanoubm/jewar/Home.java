@@ -27,7 +27,6 @@ public class Home extends FragmentActivity {
                 return new FragmentUserMap();
 
         }
-
         @Override
         public int getCount() {
             return NUM_PAGES;
@@ -54,7 +53,7 @@ public class Home extends FragmentActivity {
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new ScreenSlidePagerAdapter(getSupportFragmentManager()));
-
+   //     mPager.setOffscreenPageLimit(1);
 //        ((TextView) findViewById(R.id.subhead1)).setText(Utility.getDayraName(this));
 //        buttons = new ImageView[]{
 //                (ImageView) findViewById(R.id.img1),

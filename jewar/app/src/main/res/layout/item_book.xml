@@ -11,7 +11,8 @@
         android:id="@+id/photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:src="@mipmap/ic_def"/>
 
 
     <LinearLayout
@@ -36,16 +37,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:textColor="@color/hotgreen"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/font_largest" />
 
         <TextView
             android:id="@+id/status"
             android:layout_margin="10dp"
+            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:background="@color/hotgreen"
+            android:background="@color/blue"
             android:textSize="@dimen/font_larger" />
 
     </LinearLayout>

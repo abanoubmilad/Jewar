@@ -15,6 +15,14 @@ public class Book {
         this.author = author;
         this.photoURL = photoURL;
     }
+    public Book(String ID, String title, String rating, String author, String photoURL) {
+        this.ID = ID;
+        this.status = 2;
+        this.title = title;
+        this.rating = rating;
+        this.author = author;
+        this.photoURL = photoURL;
+    }
 
     public int getStatus() {
         return status;
