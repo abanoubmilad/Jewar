@@ -145,7 +145,7 @@ public class FragmentSearchBooks extends Fragment {
             public void onItemClick(AdapterView<?> parent, View arg1,
                                     int position, long arg3) {
                 chosenBook = mAdapter.getItem(position);
-                final CharSequence[] choice = {"add to own list", "add to wish list"};
+                final CharSequence[] choice = {"Add to own list", "Add to wish list","Search for owners"};
                 if (chosenBook.getStatus() == DB.BOOK_STATUS_OWNED) {
                     choice[0] = "remove from own list";
                 } else if (chosenBook.getStatus() == DB.BOOK_STATUS_SEEKING) {
@@ -153,32 +153,38 @@ public class FragmentSearchBooks extends Fragment {
                 }
                 final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
                 alertBuilder.setNegativeButton("Cancel", null);
-                alertBuilder.setTitle("what to do with this book ?");
+                alertBuilder.setTitle(chosenBook.getTitle());
                 alertBuilder.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (chosenBook.getStatus() == DB.BOOK_STATUS_OWNED) {
-                            if (which == 0) {
-                                chosenStatus = 2;
-                            } else {
-                                chosenStatus = DB.BOOK_STATUS_SEEKING;
-                            }
-                        } else if (chosenBook.getStatus() == DB.BOOK_STATUS_SEEKING) {
-                            if (which == 0) {
-                                chosenStatus = DB.BOOK_STATUS_OWNED;
-                            } else {
-                                chosenStatus = 2;
+                        if(which==2){
+                            Intent intent =new Intent(getContext(),BookOwnersDisplay.class);
+                            intent.putExtra("book_id",chosenBook.getID());
+                            startActivity(intent);
+                        }else {
+                            if (chosenBook.getStatus() == DB.BOOK_STATUS_OWNED) {
+                                if (which == 0) {
+                                    chosenStatus = 2;
+                                } else {
+                                    chosenStatus = DB.BOOK_STATUS_SEEKING;
+                                }
+                            } else if (chosenBook.getStatus() == DB.BOOK_STATUS_SEEKING) {
+                                if (which == 0) {
+                                    chosenStatus = DB.BOOK_STATUS_OWNED;
+                                } else {
+                                    chosenStatus = 2;
 
-                            }
-                        } else {
-                            if (which == 0) {
-                                chosenStatus = DB.BOOK_STATUS_OWNED;
+                                }
                             } else {
-                                chosenStatus = DB.BOOK_STATUS_SEEKING;
+                                if (which == 0) {
+                                    chosenStatus = DB.BOOK_STATUS_OWNED;
+                                } else {
+                                    chosenStatus = DB.BOOK_STATUS_SEEKING;
 
+                                }
                             }
+                            new UpdateUserBook().execute();
                         }
-                        new UpdateUserBook().execute();
                         dialog.dismiss();
                     }
                 });
