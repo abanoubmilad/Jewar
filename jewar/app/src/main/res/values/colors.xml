@@ -12,5 +12,6 @@
     <color name="hotred">#ffff3f77</color>
     <color name="dark">#16566f</color>
     <color name="firegreen">#C7F200</color>
+    <color name="alphagrey">#81000000</color>
 
 </resources>

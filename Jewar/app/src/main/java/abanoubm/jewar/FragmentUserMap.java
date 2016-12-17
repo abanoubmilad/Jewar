@@ -1,5 +1,6 @@
 package abanoubm.jewar;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -10,14 +11,19 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -27,7 +33,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 
-public class FragmentUserMap extends android.support.v4.app.Fragment /*implements OnMapReadyCallback, LocationListener*/ {
+public class FragmentUserMap extends Fragment implements OnMapReadyCallback, LocationListener {
     private double lon, lat;
     private Marker mLocationMarker, GPSMarker;
     private GoogleMap mMap;
@@ -85,7 +91,7 @@ public class FragmentUserMap extends android.support.v4.app.Fragment /*implement
                     MAP_REQUEST_CODE);
         }
 
-        map.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+        map.setOnMarkerDragListener(new OnMarkerDragListener() {
 
             @Override
             public void onMarkerDragStart(Marker marker) {
@@ -102,7 +108,7 @@ public class FragmentUserMap extends android.support.v4.app.Fragment /*implement
                 lon = marker.getPosition().longitude;
             }
         });
-        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        map.setOnMapClickListener(new OnMapClickListener() {
 
             @Override
             public void onMapClick(LatLng point) {

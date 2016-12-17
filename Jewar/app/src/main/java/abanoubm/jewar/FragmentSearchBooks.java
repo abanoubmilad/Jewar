@@ -145,7 +145,7 @@ public class FragmentSearchBooks extends Fragment {
             public void onItemClick(AdapterView<?> parent, View arg1,
                                     int position, long arg3) {
                 chosenBook = mAdapter.getItem(position);
-                final CharSequence[] choice = {"Add to own list", "Add to wish list","Search for owners"};
+                final CharSequence[] choice = {"Add to own list", "Add to wish list", "Search for owners", "Search for owners using maps"};
                 if (chosenBook.getStatus() == DB.BOOK_STATUS_OWNED) {
                     choice[0] = "remove from own list";
                 } else if (chosenBook.getStatus() == DB.BOOK_STATUS_SEEKING) {
@@ -157,11 +157,15 @@ public class FragmentSearchBooks extends Fragment {
                 alertBuilder.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if(which==2){
-                            Intent intent =new Intent(getContext(),BookOwnersDisplay.class);
-                            intent.putExtra("book_id",chosenBook.getID());
+                        if (which == 2) {
+                            Intent intent = new Intent(getContext(), BookOwnersDisplay.class);
+                            intent.putExtra("book_id", chosenBook.getID());
                             startActivity(intent);
-                        }else {
+                        } else if (which == 3) {
+                            Intent intent = new Intent(getContext(), BookOwnersDisplayMap.class);
+                            intent.putExtra("book_id", chosenBook.getID());
+                            startActivity(intent);
+                        } else {
                             if (chosenBook.getStatus() == DB.BOOK_STATUS_OWNED) {
                                 if (which == 0) {
                                     chosenStatus = 2;
