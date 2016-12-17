@@ -3,7 +3,15 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/header" />
+    <TextView
+        android:text="searching book owners"
+        android:textSize="24sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:layout_width="match_parent"

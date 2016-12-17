@@ -2,6 +2,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+    <TextView
+        android:text="searching book owners"
+        android:textSize="24sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <ProgressBar
         android:id="@+id/loading"
         style="?android:attr/progressBarStyle"
