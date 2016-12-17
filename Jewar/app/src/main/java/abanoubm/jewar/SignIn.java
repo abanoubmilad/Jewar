@@ -29,7 +29,7 @@ public class SignIn extends Activity {
 
         @Override
         protected Integer doInBackground(Void... params) {
-            return JewarApi.signUp(email.getText().toString().trim(), password.getText().toString()
+            return JewarApi.signIn(email.getText().toString().trim(), password.getText().toString()
                     .trim());
 
         }

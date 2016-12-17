@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignUp extends Activity {
-    private EditText email, password;
+    private EditText email, password, name, mobile;
     private TextView signin, signup;
 
     private class SignUpTask extends AsyncTask<Void, Void, Integer> {
@@ -29,7 +29,7 @@ public class SignUp extends Activity {
 
         @Override
         protected Integer doInBackground(Void... params) {
-            return JewarApi.signUp(email.getText().toString().trim(), password.getText().toString()
+            return JewarApi.signUp(name.getText().toString().trim(),mobile.getText().toString().trim(),email.getText().toString().trim(), password.getText().toString()
                     .trim());
 
         }
@@ -87,6 +87,8 @@ public class SignUp extends Activity {
         setContentView(R.layout.activity_sign_up);
 
         email = (EditText) findViewById(R.id.email);
+        mobile = (EditText) findViewById(R.id.mobile);
+        name = (EditText) findViewById(R.id.name);
         password = (EditText) findViewById(R.id.password);
         signin = (TextView) findViewById(R.id.sign_in);
         signup = (TextView) findViewById(R.id.sign_up);

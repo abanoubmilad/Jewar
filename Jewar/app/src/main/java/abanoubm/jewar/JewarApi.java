@@ -23,6 +23,8 @@ public class JewarApi {
     private static final String URL_remove_from_list_book = URL_HOST + "remove_from_list_book.php";
     private static final String URL_add_book = URL_HOST + "add_book.php";
     private static final String URL_sign_out = URL_HOST + "sign_out.php";
+    private static final String URL_get_location = URL_HOST + "get_location.php";
+    private static final String URL_update_location = URL_HOST + "update_location.php";
 
     public static int extractStatus(JSONObject json) {
         try {
@@ -40,8 +42,8 @@ public class JewarApi {
     }
 
     // 2 - sign up
-    public static int signUp(String email, String password) {
-        RequestBody formBody = new FormEncodingBuilder().add("email", email).add("pass", password).build();
+    public static int signUp(String name, String mobile, String email, String password) {
+        RequestBody formBody = new FormEncodingBuilder().add("name", name).add("mobile", mobile).add("email", email).add("pass", password).build();
         JSONObject json = HTTPClient.getInstance().POST(URL_sign_up, formBody);
         return extractStatus(json);
     }
@@ -56,7 +58,7 @@ public class JewarApi {
 
     // 4-add_list_book
     public static int add_list_book(String book_id, int book_status) {
-        RequestBody formBody = new FormEncodingBuilder().add("book_id", book_id).add("book_status",book_status==DB.BOOK_STATUS_OWNED?"o":book_status==DB.BOOK_STATUS_SEEKING?"s":"e")
+        RequestBody formBody = new FormEncodingBuilder().add("book_id", book_id).add("book_status", book_status == DB.BOOK_STATUS_OWNED ? "o" : book_status == DB.BOOK_STATUS_SEEKING ? "s" : "e")
                 .build();
         JSONObject json = HTTPClient.getInstance().POST(URL_add_list_book, formBody);
         return extractStatus(json);
@@ -65,7 +67,7 @@ public class JewarApi {
 
     // 5 -URL_get_books_of_user
     public static APIResponse get_books_of_user(int book_status) {
-        RequestBody formBody = new FormEncodingBuilder().add("book_status", book_status+"").build();
+        RequestBody formBody = new FormEncodingBuilder().add("book_status", book_status + "").build();
         JSONObject json = HTTPClient.getInstance().POST(URL_get_books_of_user, formBody);
 
         int status = extractStatus(json);
@@ -80,7 +82,7 @@ public class JewarApi {
                 for (int i = 0; i < arr.length(); i++) {
                     JSONArray inArr = arr.getJSONArray(i); // inArr.getString(0),
                     // inArr.getString(1))
-                    books.add(new Book(inArr.getString(0),book_status, inArr.getString(1), inArr.getString(3), inArr.getString(2),
+                    books.add(new Book(inArr.getString(0), book_status, inArr.getString(1), inArr.getString(3), inArr.getString(2),
                             inArr.getString(4)));
                 }
 
@@ -181,5 +183,28 @@ public class JewarApi {
     public static int sign_out() {
         JSONObject json = HTTPClient.getInstance().get(URL_sign_out);
         return extractStatus(json);
+    }
+
+    public static int update_location(double lat, double lng) {
+        RequestBody formBody = new FormEncodingBuilder().add("lat", lat+"").add("lng", lng+"").build();
+        JSONObject json = HTTPClient.getInstance().POST(URL_update_location, formBody);
+        return extractStatus(json);
+    }
+    public static APIResponse get_location() {
+        JSONObject json = HTTPClient.getInstance().get(URL_get_location);
+        int status = extractStatus(json);
+        ArrayList<Double> locs = null;
+        if (status == 7) {
+            try {
+
+                JSONArray arr = json.getJSONArray("location");
+                locs = new ArrayList<>(2);
+                locs.add(arr.getDouble(0));
+                locs.add(arr.getDouble(1));
+
+            } catch (Exception e) {
+            }
+        }
+        return new APIResponse<>(status, locs);
     }
 }

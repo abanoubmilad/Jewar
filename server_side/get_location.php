@@ -8,21 +8,21 @@
  * @edited     11/30/2016
  */
 define( "STATUS", "status" );
-define( "OWNERS", "book_owners" );
+define( "LOCATION", "location" );
 $response = array();
 session_start();
 if ( isset( $_SESSION['id'] ) ) {
-    if ( isset( $_POST['book_id'] ) ) {
-        $book_id=$_POST['book_id'];
-        if (  preg_match( "/[0-9]+/", $book_id )  ) {
+    if ( isset( $_POST['user_id'] ) ) {
+        $user_id=$_POST['user_id'];
+        if (  preg_match( "/[0-9]+/", $user_id )  ) {
             include "Opr.php";
             $opr=new Opr();
-            $owners=$opr -> get_owners_of_book( $_SESSION['id'], $book_id );
-            if ( $owners===false )
+            $location=$opr -> get_location( $user_id );
+            if ( $info===false )
                 $response[STATUS] = 3;
             else {
                 $response[STATUS] = 7;
-                $response[OWNERS] = $owners;
+                $response[LOCATION] = $location;
             }
         }else
             $response[STATUS] = 2;

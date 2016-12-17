@@ -36,7 +36,16 @@
                 android:layout_gravity="center"
                 android:visibility="gone" />
 
-
+            <EditText
+                android:id="@+id/name"
+                style="@style/field_input"
+                android:hint="name"
+                android:inputType="textPassword"></EditText>
+            <EditText
+                android:id="@+id/mobile"
+                style="@style/field_input"
+                android:hint="mobile (optional)"
+                android:inputType="textPassword"></EditText>
             <EditText
                 android:id="@+id/email"
                 style="@style/field_input"

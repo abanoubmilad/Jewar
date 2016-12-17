@@ -15,11 +15,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <ImageView
-            android:id="@+id/saveImage"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/action_bg" />
+            android:padding="10dp"
+            android:text="save"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:background="@color/hotgreen" />
     </RelativeLayout>
 
 
