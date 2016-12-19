@@ -40,12 +40,12 @@
                 android:id="@+id/name"
                 style="@style/field_input"
                 android:hint="name"
-                android:inputType="textPassword"></EditText>
+                android:inputType="text"></EditText>
             <EditText
                 android:id="@+id/mobile"
                 style="@style/field_input"
                 android:hint="mobile (optional)"
-                android:inputType="textPassword"></EditText>
+                android:inputType="phone"></EditText>
             <EditText
                 android:id="@+id/email"
                 style="@style/field_input"

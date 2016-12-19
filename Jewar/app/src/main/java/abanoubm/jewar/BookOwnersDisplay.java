@@ -27,7 +27,7 @@ public class BookOwnersDisplay extends FragmentActivity {
             pBar = new ProgressDialog(BookOwnersDisplay.this);
             pBar.setCancelable(false);
             pBar.setTitle("loading");
-            pBar.setMessage("signing in ....");
+            pBar.setMessage("searching for owners ....");
             pBar.show();
         }
 
@@ -51,6 +51,15 @@ public class BookOwnersDisplay extends FragmentActivity {
                     finish();
                     startActivity(new Intent(BookOwnersDisplay.this, SignIn.class));
 
+                    break;
+                case 2:
+                    Toast.makeText(getApplicationContext(), "2222222",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case 3:
+                    Toast.makeText(getApplicationContext(), "no book owners found!!",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
                     break;
                 case 7:
                     ArrayList<BookOwner> owners = (ArrayList<BookOwner>) response.getData();

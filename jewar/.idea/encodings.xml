@@ -8,7 +8,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/BookOwnersDisplayMap.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/DB.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentCurrentBooks.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentDisplayContactConnection.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentSearchBooks.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/FragmentUserMap.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/abanoubm/jewar/GoodReadsHTTPClient.java" charset="UTF-8" />

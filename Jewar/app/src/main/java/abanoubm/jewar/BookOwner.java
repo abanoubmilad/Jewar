@@ -3,14 +3,31 @@ package abanoubm.jewar;
 public class BookOwner {
     private String ID,name;
     private double lat,lng;
-    private byte [] photo;
+    private String email,mobile;
 
-    public BookOwner(String ID, String name, double lat, double lng, byte[] photo) {
+    public BookOwner(String ID, String name,String email,String mobile, double lat, double lng) {
         this.ID = ID;
         this.name = name;
+        this.email = email;
+        this.mobile = mobile;
         this.lat = lat;
         this.lng = lng;
-        this.photo = photo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getID() {
@@ -45,11 +62,4 @@ public class BookOwner {
         this.lng = lng;
     }
 
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
 }

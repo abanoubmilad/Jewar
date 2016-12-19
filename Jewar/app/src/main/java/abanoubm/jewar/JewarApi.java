@@ -109,8 +109,8 @@ public class JewarApi {
                 for (int i = 0; i < arr.length(); i++) {
                     JSONArray inArr = arr.getJSONArray(i); // inArr.getString(0),
                     // inArr.getString(1))
-                    bookOwners.add(new BookOwner(inArr.getString(0), inArr.getString(1), inArr.getDouble(2),
-                            inArr.getDouble(3), null)); // ID, name, lat, lng,
+                    bookOwners.add(new BookOwner(inArr.getString(0), inArr.getString(1),inArr.getString(2),inArr.getString(3), inArr.getDouble(4),
+                            inArr.getDouble(5))); // ID, name, lat, lng,
                     // photo
                 }
                 // fill it
@@ -123,27 +123,27 @@ public class JewarApi {
     }
 
     // 7-get_user_info.php
-    public static APIResponse get_user_info(String user_id) {
-        RequestBody formBody = new FormEncodingBuilder().add("user_id", user_id).build();
-        JSONObject json = HTTPClient.getInstance().POST(URL_get_user_info, formBody);
-
-        int status = extractStatus(json);
-        BookOwner bookOwner = null;
-        if (status == 7) {
-            try {
-                JSONArray arr = json.getJSONArray("user_info");
-                bookOwner = new BookOwner(arr.getString(0), arr.getString(1), arr.getDouble(2), arr.getDouble(3), null); // ID,
-                // name,
-                // lat,
-                // lng,
-                // photo
-
-            } catch (Exception e) {
-            }
-        }
-        return new APIResponse<>(status, bookOwner);
-
-    }
+//    public static APIResponse get_user_info(String user_id) {
+//        RequestBody formBody = new FormEncodingBuilder().add("user_id", user_id).build();
+//        JSONObject json = HTTPClient.getInstance().POST(URL_get_user_info, formBody);
+//
+//        int status = extractStatus(json);
+//        BookOwner bookOwner = null;
+//        if (status == 7) {
+//            try {
+//                JSONArray arr = json.getJSONArray("user_info");
+//                bookOwner = new BookOwner(arr.getString(0), arr.getString(1), arr.getDouble(2), arr.getDouble(3), null); // ID,
+//                // name,
+//                // lat,
+//                // lng,
+//                // photo
+//
+//            } catch (Exception e) {
+//            }
+//        }
+//        return new APIResponse<>(status, bookOwner);
+//
+//    }
 
     // 8- remove_from_list_book.php
     public static int remove_from_list_book(String book_id) {

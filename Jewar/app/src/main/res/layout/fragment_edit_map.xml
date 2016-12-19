@@ -2,7 +2,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-
+    <TextView
+        android:text="your meeting location"
+        android:textSize="24sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -20,13 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="save"
+            android:text="save location"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="20dp"
             android:textSize="24sp"
             android:textColor="@color/white"
-            android:background="@color/hotgreen" />
+            android:background="@color/hotgreen"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 

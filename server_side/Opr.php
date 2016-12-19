@@ -215,7 +215,7 @@ class Opr {
 	 */
     public function get_owners_of_book( $user_id, $book_fk) {
     	$location=  $this->get_user_location( $user_id );
-		$query ="SELECT user_id, name, map_lat, map_lng FROM ".
+		$query ="SELECT user_id, name, email, mobile, map_lat, map_lng FROM ".
 		self::TB_BOOK_USER." INNER JOIN ".self::TB_USER.
 		" ON user_fk=user_id WHERE book_fk='$book_fk' AND book_status='o' ORDER BY ".
 		"DEGREES(ACOS(COS(RADIANS('$location[0]')) * COS(RADIANS(map_lat)) * COS(RADIANS(map_lng) - RADIANS('$location[1]')) + SIN(RADIANS('$location[0]')) * SIN(RADIANS(map_lat))))";

@@ -36,6 +36,7 @@ public class SignIn extends Activity {
 
         @Override
         protected void onPostExecute(Integer status) {
+        //    Utility.clearLogin(getApplicationContext());
             switch (status.intValue()) {
                 case -1:
                     Toast.makeText(getApplicationContext(), "check internet connection",
@@ -54,6 +55,8 @@ public class SignIn extends Activity {
                             Toast.LENGTH_SHORT).show();
                     break;
                 case 7:
+                    Utility.setLogin(getApplicationContext(), email.getText().toString().trim(), password.getText().toString()
+                            .trim());
                     Intent intent = new Intent(getApplicationContext(), Home.class);
 //				if (remember.isChecked()) {
 //					SharedPreferences.Editor editor = getSharedPreferences(
@@ -113,5 +116,10 @@ public class SignIn extends Activity {
                 new SignUpTask().execute();
             }
         });
+        String emailStr = Utility.getLoginEmail(getApplicationContext());
+        if (email.length() != 0) {
+            email.setText(emailStr);
+            password.setText(Utility.getLoginPassword(getApplicationContext()));
+        }
     }
 }

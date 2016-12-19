@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.LocationListener;
@@ -38,7 +39,7 @@ public class FragmentUserMap extends Fragment implements OnMapReadyCallback, Loc
     private Marker mLocationMarker, GPSMarker;
     private GoogleMap mMap;
     private final int MAP_REQUEST_CODE = 600;
-
+private TextView saveButton;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,8 @@ public class FragmentUserMap extends Fragment implements OnMapReadyCallback, Loc
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        root.findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+        saveButton = (TextView)root.findViewById(R.id.save);
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new UpdateTask().execute();
@@ -100,6 +102,7 @@ public class FragmentUserMap extends Fragment implements OnMapReadyCallback, Loc
 
             @Override
             public void onMarkerDragEnd(Marker marker) {
+                saveButton.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -125,6 +128,8 @@ public class FragmentUserMap extends Fragment implements OnMapReadyCallback, Loc
 
                 lat = point.latitude;
                 lon = point.longitude;
+                saveButton.setVisibility(View.VISIBLE);
+
             }
         });
 

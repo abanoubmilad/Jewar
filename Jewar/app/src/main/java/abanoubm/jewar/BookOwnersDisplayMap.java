@@ -48,10 +48,10 @@ public class BookOwnersDisplayMap extends FragmentActivity implements
 
         @Override
         protected void onPreExecute() {
-            pBar = new ProgressDialog(getApplicationContext());
+            pBar = new ProgressDialog(BookOwnersDisplayMap.this);
             pBar.setCancelable(false);
             pBar.setTitle("loading");
-            pBar.setMessage("signing in ....");
+            pBar.setMessage("searching for owners ....");
             pBar.show();
         }
 
@@ -71,6 +71,12 @@ public class BookOwnersDisplayMap extends FragmentActivity implements
                     startActivity(new Intent(BookOwnersDisplayMap.this, SignIn.class));
 
                     break;
+                case 3:
+                    Toast.makeText(getApplicationContext(), "no book owners found!!",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                    break;
+
                 case 7:
                     ArrayList<BookOwner> owners = (ArrayList<BookOwner>) response.getData();
                     if (owners != null) {
@@ -165,6 +171,8 @@ public class BookOwnersDisplayMap extends FragmentActivity implements
                 BookOwner owner = mMarkerInfoList.get(marker.getId());
                 if (owner != null) {
                     name.setText(owner.getName());
+                    email.setText(owner.getEmail());
+                    mobile.setText(owner.getMobile());
 
                 }
                 return false;

@@ -14,7 +14,7 @@ if ( isset( $_SESSION['id'] ) ) {
 	if ( isset( $_POST['lat'] ) && isset( $_POST['lng'] ) ){
         $lat = $_POST['lat'];
         $lng = $_POST['lng'];
-		 if (filter_var($lat, FILTER_VALIDATE_FLOAT) && filter_var($lng, FILTER_VALIDATE_FLOAT) ) {
+		 if ( preg_match( "/^-?(?:\d+|\d*\.\d+)$/", $lat ) && preg_match( "/^-?(?:\d+|\d*\.\d+)$/", $lng ) ) {
 		 	include "Opr.php";
             $opr=new Opr();
             $check=$opr -> update_user_location( $_SESSION['id'], $lat, $lng );

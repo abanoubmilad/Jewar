@@ -25,22 +25,26 @@ public class BookOwnerAdapter extends AbstractAdapter<BookOwner> {
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.item_owner, parent, false);
             holder = new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.title);
+            holder.name = (TextView) convertView.findViewById(R.id.name);
+            holder.email = (TextView) convertView.findViewById(R.id.email);
             holder.photo = (ImageView) convertView.findViewById(R.id.photo);
+            holder.mobile = (TextView) convertView.findViewById(R.id.mobile);
             holder.root = convertView.findViewById(R.id.root);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
-        }
-        if (holder.bitmap != null)
-            holder.bitmap.recycle();
-        holder.bitmap = Utility.getBitmap(owner.getPhoto());
-        if (holder.bitmap != null)
-            holder.photo.setImageBitmap(holder.bitmap);
-        else
             holder.photo.setImageResource(R.mipmap.ic_photo_def);
+        }
+//        if (holder.bitmap != null)
+//            holder.bitmap.recycle();
+//        holder.bitmap = Utility.getBitmap(owner.getPhoto());
+//        if (holder.bitmap != null)
+//            holder.photo.setImageBitmap(holder.bitmap);
+//        else
 
         holder.name.setText(owner.getName());
+        holder.mobile.setText(owner.getMobile());
+        holder.email.setText(owner.getEmail());
 
 
         return convertView;
@@ -48,9 +52,10 @@ public class BookOwnerAdapter extends AbstractAdapter<BookOwner> {
 
     private static class ViewHolder {
         TextView name;
+        TextView email;
+        TextView mobile;
         ImageView photo;
         View root;
-        Bitmap bitmap;
 
     }
 
