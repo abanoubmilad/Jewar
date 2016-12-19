@@ -9,15 +9,19 @@
  */
 define( "STATUS", "status" );
 $response = array();
-if ( isset( $_POST['email'] ) && isset( $_POST['pass'] ) ) {
+if ( isset( $_POST['email'] ) && isset( $_POST['pass'] ) && isset( $_POST['name'] ) ) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
-    if ( filter_var( $email, FILTER_VALIDATE_EMAIL ) && preg_match( "/[a-zA-Z0-9]{5,20}/", $password ) ) {
+    $name = $_POST['name'];
+    $mobile="";
+    if(isset( $_POST['mobile'] ))
+        $mobile = $_POST['mobile'];  
+    if ( filter_var( $email, FILTER_VALIDATE_EMAIL ) && preg_match( "/[a-zA-Z0-9]{5,20}/", $password )&& preg_match( "/[a-zA-Z]{4,40}/", $name ) && ($mobile=="" || preg_match( "/[0-9]{5,20}/", $mobile )) ) {
         include "Opr.php";
         $opr=new Opr();
         $check=$opr -> get_email( $email );
         if ( $check===false ){
-            $id=$opr -> add_user( $email, $password );
+            $id=$opr -> add_user( $email, $password, $name, $mobile );
             if ( $id===false )
                 $response[STATUS] = 3;
             else {

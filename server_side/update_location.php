@@ -17,7 +17,7 @@ if ( isset( $_SESSION['id'] ) ) {
 		 if (filter_var($lat, FILTER_VALIDATE_FLOAT) && filter_var($lng, FILTER_VALIDATE_FLOAT) ) {
 		 	include "Opr.php";
             $opr=new Opr();
-            $check=$opr -> update_location( $_SESSION['id'], $lat, $lng );
+            $check=$opr -> update_user_location( $_SESSION['id'], $lat, $lng );
             if ( $check===false )
                 $response[STATUS] = 3;
             else

@@ -87,7 +87,7 @@ class Opr {
 	 * @return int id of the user
 	 */
 	public function add_user( $email, $password, $name, $mobile ) {
-		$query ="INSERT INTO ".self::TB_USER." VALUES (NULL,'$name', '$mobile', '$email','$password','','')";
+		$query ="INSERT INTO ".self::TB_USER." VALUES (NULL,'$name', '$mobile','$email','$password','','')";
 		return self::$db -> insert( $query );
 	}
 	/**
@@ -102,8 +102,8 @@ class Opr {
 	 * @param string  $photo       the user's notification rate
 	 * @return int id of the user
 	 */
-	public function add_user_excess( $email, $password, $name, $mobile, $lat, $lng, $photo ) {
-		$query ="INSERT INTO ".self::TB_USER." VALUES (NULL,'$name', '$email','$password','$mobile','$lat,','$lng,', '$photo')";
+	public function add_user_excess( $email, $password, $name, $mobile, $lat, $lng ) {
+		$query ="INSERT INTO ".self::TB_USER." VALUES (NULL,'$name', '$mobile','$email','$password','$lat','$lng')";
 		return self::$db -> insert( $query );
 	}
 
@@ -118,7 +118,7 @@ class Opr {
 	 * @return bool true if success, false if failure
 	 */
 	public function update_user_info( $user_id, $name, $mobile, $lat, $lng, $photo ) {
-		$query ="UPDATE ".self::TB_USER." SET name='$name', mobile='$mobile', lat='$lat', lng='$lng' , photo='$photo' WHERE id='$user_id'";
+		$query ="UPDATE ".self::TB_USER." SET name='$name', mobile='$mobile', map_lat='$lat', map_lng='$lng' WHERE user_id='$user_id'";
 		return self::$db -> query_and_check( $query );
 	}
 		/**
@@ -129,7 +129,7 @@ class Opr {
 	 * @return bool true if success, false if failure
 	 */
 	public function update_user_location( $user_id,  $lat, $lng ) {
-		$query ="UPDATE ".self::TB_USER." SET lat='$lat', lng='$lng' WHERE id='$user_id'";
+		$query ="UPDATE ".self::TB_USER." SET map_lat='$lat', map_lng='$lng' WHERE user_id='$user_id'";
 		return self::$db -> query_and_check( $query );
 	}
 			/**
@@ -140,7 +140,7 @@ class Opr {
 	 * @return bool true if success, false if failure
 	 */
 	public function update_user_photo( $user_id,  $photo) {
-		$query ="UPDATE ".self::TB_USER." SET photo='$photo' WHERE id='$user_id'";
+		$query ="UPDATE ".self::TB_USER." SET photo='$photo' WHERE user_id='$user_id'";
 		return self::$db -> query_and_check( $query );
 	}
 	/**

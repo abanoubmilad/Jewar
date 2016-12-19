@@ -12,22 +12,15 @@ define( "LOCATION", "location" );
 $response = array();
 session_start();
 if ( isset( $_SESSION['id'] ) ) {
-    if ( isset( $_POST['user_id'] ) ) {
-        $user_id=$_POST['user_id'];
-        if (  preg_match( "/[0-9]+/", $user_id )  ) {
-            include "Opr.php";
-            $opr=new Opr();
-            $location=$opr -> get_location( $user_id );
-            if ( $info===false )
-                $response[STATUS] = 3;
-            else {
-                $response[STATUS] = 7;
-                $response[LOCATION] = $location;
-            }
-        }else
-            $response[STATUS] = 2;
-    }else
-        $response[STATUS] = 1;
+    include "Opr.php";
+    $opr=new Opr();
+    $location=$opr -> get_user_location( $_SESSION['id'] );
+    if ( $location===false )
+        $response[STATUS] = 3;
+    else {
+        $response[STATUS] = 7;
+        $response[LOCATION] = $location;
+    }
 } else
     $response[STATUS] = 0;
 
