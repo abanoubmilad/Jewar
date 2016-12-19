@@ -31,27 +31,50 @@ public class HTTPClient {
 		return http;
 	}
 
-	public JSONObject POST(String url, RequestBody body) {
+    public JSONObject get(String url) {
 
-		Request request = new Request.Builder().url(url).post(body).build();
-		Response response;
-		try {
-			response = client.newCall(request).execute();
-			String str = response.body().string();
-			System.out.println("response before: " + str);
-			str = str.replaceAll(">.+<", "><").replaceAll("<.+>", "");
-			System.out.println("response: " + str);
-			if (response.isSuccessful())
-				try {
-					return new JSONObject(str);
-				} catch (JSONException e) {
-					return null;
-				}
-			return null;
-		} catch (IOException e) {
-			return null;
-		}
+        Request request = new Request.Builder().url(url).build();
+        Response response;
+        try {
+            response = client.newCall(request).execute();
+            String str = response.body().string();
+            System.out.println("response before: " + str);
+            str = str.replaceAll(">.+<", "><").replaceAll("<.+>", "");
+            System.out.println("response: " + str);
+            if (response.isSuccessful())
+                try {
+                    return new JSONObject(str);
+                } catch (JSONException e) {
+                    return null;
+                }
+            return null;
+        } catch (IOException e) {
+            return null;
+        }
 
-	}
+    }
+
+    public JSONObject POST(String url, RequestBody body) {
+
+        Request request = new Request.Builder().url(url).post(body).build();
+        Response response;
+        try {
+            response = client.newCall(request).execute();
+            String str = response.body().string();
+            System.out.println("response before: " + str);
+            str = str.replaceAll(">.+<", "><").replaceAll("<.+>", "");
+            System.out.println("response: " + str);
+            if (response.isSuccessful())
+                try {
+                    return new JSONObject(str);
+                } catch (JSONException e) {
+                    return null;
+                }
+            return null;
+        } catch (IOException e) {
+            return null;
+        }
+
+    }
 
 }
